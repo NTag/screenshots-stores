@@ -23,13 +23,15 @@ app.post("/screenshot", async (req, res) => {
 
   const filename = `${platform}_${locale}_${screen}_${name}.png`;
   const path = `./screenshots/${filename}`;
+  console.log("Taking screenshot:", path);
 
   if (platform === "android") {
-    throw new Error("Not implemented");
+    await exec(`adb -s emulator-5554 exec-out screencap -p > ${path}`);
+  } else if (platform === "ios") {
+    await exec(`xcrun simctl io booted screenshot ${path}`);
+  } else {
+    throw new Error("Unknown platform");
   }
-
-  console.log("Taking screenshot:", path);
-  await exec(`xcrun simctl io booted screenshot ${path}`);
 
   res.sendStatus(200);
 });

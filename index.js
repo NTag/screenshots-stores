@@ -15,7 +15,7 @@ const start = async (platform) => {
   await exec(
     `npx uri-scheme open "myprepdev:///locale?locale=fr" --${platform}`
   );
-  await waitFor(1000);
+  await waitFor(3_000);
   console.log("Take screenshots for FR");
   await exec(`npx uri-scheme open "myprepdev:///screenshots" --${platform}`);
   await waitForScreenshotsToEnd();
@@ -24,18 +24,18 @@ const start = async (platform) => {
   await exec(
     `npx uri-scheme open "myprepdev:///locale?locale=en" --${platform}`
   );
-  await waitFor(1000);
+  await waitFor(3_000);
   console.log("Take screenshots for EN");
   await exec(`npx uri-scheme open "myprepdev:///screenshots" --${platform}`);
   await waitForScreenshotsToEnd();
   console.log("Screenshots for EN are done");
 
-  console.log("Create mockups");
-  await createMockups();
-  console.log("Mockups are created");
+  // console.log("Create mockups");
+  // await createMockups();
+  // console.log("Mockups are created");
 
   process.exit(0);
 };
 
-// await start("ios");
+// await start("android");
 await createMockups();
