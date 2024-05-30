@@ -1,3 +1,4 @@
+import { createMockupForFile } from "../mockups/index.js";
 import { exec } from "../helpers/exec.js";
 import express from "express";
 
@@ -32,6 +33,8 @@ app.post("/screenshot", async (req, res) => {
   } else {
     throw new Error("Unknown platform");
   }
+
+  createMockupForFile(filename);
 
   res.sendStatus(200);
 });

@@ -3,7 +3,8 @@ import { Canvas, Image } from "@napi-rs/canvas";
 import fs from "fs/promises";
 
 const wrapTextAndCenter = (ctx, text, font, xCenter, yCenter, maxWidth) => {
-  ctx.font = `bold ${font.size}pt SF Pro Display`;
+  const fontSize = text.length > 60 ? font.size - 10 : font.size;
+  ctx.font = `bold ${fontSize}pt SF Pro Display`;
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
 

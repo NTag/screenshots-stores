@@ -4,7 +4,7 @@ This code aims to automate app screenshots capture and mockups creation.
 
 It works as follow:
 
-- You open your app in the simulator of your choice (usually either iPhone 8 Plus or iPhon 15 Pro Max to get the 5.5' and 6.7' screenshots Apple wants, for Android there are less constraints, I used a Pixel 3 emulator)
+- You open your app in the simulator of your choice (usually either iPhone 8 Plus or iPhone 15 Pro Max to get the 5.5' and 6.7' screenshots Apple wants, for Android there are less constraints, I used a Pixel 3 emulator)
 - The script exposes a webserver on localhost:3100/screenshot that when called take a screenshot of the simulator and save it in the screenshots folder
 - The script will ask the simulator to open an URL, for example yourappdev:///screenshots
 - The app must prepared to received this url (for example with expo-linking). When it does, the idea is that it configures itself with nice data and then navigate to different screens that should be screenshoted. When in a state that should be screenshoted, the app should call the webserver to take the screenshot: `fetch('http://localhost:3100/screenshot')`
