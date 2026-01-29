@@ -5,7 +5,7 @@ import sharp from "sharp";
 
 const backgroundAndroidBuffer = await fs.readFile("./assets/bg-android.png");
 const background55Buffer = await fs.readFile("./assets/bg-s55.png");
-const background67Buffer = await fs.readFile("./assets/bg-s67.png");
+const background67Buffer = await fs.readFile("./assets/bg-blue-s67.png");
 const frame67Buffer = await fs.readFile("./assets/frame-s67.png");
 
 const backgroundAndroidMetadata = await sharp(
@@ -17,6 +17,37 @@ const frame67Metadata = await sharp(frame67Buffer).metadata();
 
 const resolutionsMapping = {
   ios: {
+    "420x912": {
+      // iPhone Air
+      background: {
+        buffer: background67Buffer,
+        height: background67Metadata.height,
+        width: background67Metadata.width,
+      },
+      frame: {
+        buffer: frame67Buffer,
+        position: { x: 128, y: 427 },
+        height: frame67Metadata.height,
+        width: frame67Metadata.width,
+        radius: 128,
+        border: 10,
+      },
+      title: {
+        x: background67Metadata.width / 2,
+        y: 427 / 2,
+        width: background67Metadata.width - 128,
+      },
+      screenshot: {
+        height: frame67Metadata.height - 20,
+        width: frame67Metadata.width - 20,
+        position: { x: 128 + 10, y: 427 + 10 },
+        radius: 128,
+      },
+      font: {
+        size: 70,
+        height: 120,
+      },
+    },
     "430x932": {
       background: {
         buffer: background67Buffer,
